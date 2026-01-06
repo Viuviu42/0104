@@ -22,9 +22,10 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Email</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>NFC</th>
+                <th>Camera</th>
             </tr>
         </thead>
         <tbody id="table_body">
@@ -34,7 +35,7 @@
 </body>
 <script>
     
-fetch('https://jsonplaceholder.typicode.com/users')
+fetch('https://surveys-5jvt.onrender.com/api/phones/')
 
 .then(response => {
 
@@ -56,16 +57,24 @@ users.forEach(user => {
     const row = document.createElement('tr');
     const idCell = document.createElement('td');
     idCell.textContent = user.id;
-    const nameCell = document.createElement('td');
-    nameCell.textContent = user.name;
-    const usernameCell = document.createElement('td');
-    usernameCell.textContent = user.username;
-    const emailCell = document.createElement('td');
-    emailCell.textContent = user.email;
+    const brandCell = document.createElement('td');
+    brandCell.textContent = user.brand;
+    const modelCell = document.createElement('td');
+    modelCell.textContent = user.model;
+    const nfcCell = document.createElement('td');
+    if(user.nfc){
+         nfcCell.textContent = "van"
+    }
+    else{
+         nfcCell.textContent = "nincs"
+    }
+    const cameraCell = document.createElement('td');
+    cameraCell.textContent = user.camera
     row.appendChild(idCell);
-    row.appendChild(nameCell);
-    row.appendChild(usernameCell);
-    row.appendChild(emailCell);
+    row.appendChild(brandCell);
+    row.appendChild(modelCell);
+    row.appendChild(nfcCell);
+    row.appendChild(cameraCell)
     table.appendChild(row);});
 })
 
